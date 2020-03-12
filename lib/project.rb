@@ -10,4 +10,13 @@ class Project
         ProjectBacker.new(self, backer)
     end
 
+    def backers
+        pbi_clean = ProjectBacker.all.select do |pbi|
+            pbi.project == self
+        end
+        pbi_clean.map do |pbi|
+            pbi.backer
+        end
+    end
+
 end
